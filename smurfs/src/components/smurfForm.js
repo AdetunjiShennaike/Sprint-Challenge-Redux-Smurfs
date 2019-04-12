@@ -27,3 +27,5 @@ let SmurfList = (props) => {
     </div> 
   )
 }
+
+export default SmurfList 

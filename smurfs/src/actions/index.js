@@ -22,12 +22,28 @@ export let FAIL = 'FAIL'
 export const grabSmurfs = () => dispatch => {
   dispatch({ type: FETCH })
 
-  axios.get(`http://localhost:3333/smurfs`)
+  axios.get('http://localhost:3333/smurfs')
   .then( res => {console.log('action', res)
     dispatch({ type: SUCCESS, payload: res.data })
   })
   .catch( err => {
     dispatch({ type: FAIL, payload: err})
   })  
+}
 
+export let ADD_START = 'ADD_START'
+export let ADD_SUCCESS = 'ADD_SUCCESS'
+export let ADD_FAIL = 'ADD_FAIL'
+
+
+export const addSmurfs = () => dispatch => {
+  dispatch({ type: ADD_START })
+
+  axios.post('http://localhost:3333/smurfs')
+  .then( res => {console.log('post', res)
+    dispatch({ type: ADD_SUCCESS, payload: res.data })
+  })
+  .catch( err => {
+    dispatch({ type: ADD_FAIL, payload: err})
+  })  
 }
