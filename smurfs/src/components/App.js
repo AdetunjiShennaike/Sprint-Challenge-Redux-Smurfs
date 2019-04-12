@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux'
 
 import { grabSmurfs } from '../actions/'
-import { Smurf } from './smurf';
+import Smurf from './smurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -14,12 +14,13 @@ import { Smurf } from './smurf';
  */
 class App extends Component {
   componentDidMount() {
-    // call our action
     this.props.grabSmurfs()
-    console.log('CDM', this.props)
+    // console.log('CDM', this.props)
   }
+
+  
   render() {
-    console.log(this.props.smurfs)
+    // console.log(this.props.smurfs)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>

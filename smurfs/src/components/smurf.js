@@ -1,6 +1,6 @@
 import React from 'react'
 
-export let Smurf = (props) => {
+let Smurf = (props) => {
   console.log(props.smurf)
   return (
     <div>
@@ -9,3 +9,4 @@ export let Smurf = (props) => {
   )
 } 
 
+export default Smurf
