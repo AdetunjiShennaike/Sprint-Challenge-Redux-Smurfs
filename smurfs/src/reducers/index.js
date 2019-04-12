@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FAIL, FETCH, SUCCESS } from "../actions";
+import { FAIL, FETCH, SUCCESS, ADD_START, ADD_SUCCESS, ADD_FAIL } from "../actions";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -32,6 +32,19 @@ const initialState = {
 */
 export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_START:
+      return {
+        ...state,
+        addingSmurf: true,
+        error: ''
+      }
+    case ADD_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload,
+        error: ''
+      }
     case FETCH: 
       return {
         ...state,
