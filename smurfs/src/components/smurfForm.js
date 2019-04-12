@@ -14,8 +14,8 @@ class SmurfList extends React.Component {
     }
   }
 
-  handleChanges = event => {
-    console.log('event',event.target.value)
+  handleChange = event => {
+    console.log('event', event.target.value)
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -54,7 +54,7 @@ class SmurfList extends React.Component {
         placeholder='Height'
         name='height'
       />
-      <button onClick={this.newSmurf}>Add</button>
+      <button type='submit' onClick={this.newSmurf}>Add</button>
       </form>
     </div> 
   )}
