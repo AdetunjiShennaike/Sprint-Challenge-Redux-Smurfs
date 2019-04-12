@@ -19,10 +19,6 @@ class App extends Component {
     // console.log('CDM', this.props)
   }
 
-  handleChanges = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-
   newSmurf = event => {
     event.preventDefault()
     this.props.addSmurfs()
@@ -30,6 +26,7 @@ class App extends Component {
 
   render() {
     // console.log(this.props.smurfs)
+    console.log(Smurf)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -39,7 +36,7 @@ class App extends Component {
         {this.props.smurfs.map( event => {
           <Smurf key={event.id} smurf={event} />
         })}
-        <SmurfList smurf={this.props.smurfs} handleChanges={this.handleChanges} addSmurf={this.newSmurf} />
+        <SmurfList smurf={this.props.smurfs} newSmurf={this.newSmurf} />
       </div>
     );
   }
