@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux'
 
 import { grabSmurfs } from '../actions/'
-import Smurf from './smurf';
+import { Smurf } from './smurf';
 
 /*
  to wire this component up you're going to need a few things.
