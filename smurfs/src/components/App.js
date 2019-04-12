@@ -3,7 +3,7 @@ import './App.css';
 
 import { connect } from 'react-redux'
 
-import { grabSmurfs, addSmurfs } from '../actions/'
+import { grabSmurfs } from '../actions/'
 import Smurf from './smurf';
 import SmurfList from './smurfForm';
 
@@ -19,14 +19,9 @@ class App extends Component {
     // console.log('CDM', this.props)
   }
 
-  newSmurf = event => {
-    event.preventDefault()
-    this.props.addSmurfs()
-  }
-
   render() {
     // console.log(this.props.smurfs)
-    console.log(Smurf)
+    // console.log(Smurf)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -34,9 +29,11 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         {this.props.smurfs.map( event => {
+          return(
           <Smurf key={event.id} smurf={event} />
+          )
         })}
-        <SmurfList smurf={this.props.smurfs} newSmurf={this.newSmurf} />
+        <SmurfList />
       </div>
     );
   }
@@ -50,4 +47,4 @@ const mapStateToProps = state => ({
   deletingSmurf: state.deletingSmurf
 })
 
-export default connect( mapStateToProps, { grabSmurfs, addSmurfs } )(App);
+export default connect( mapStateToProps, { grabSmurfs } )(App);

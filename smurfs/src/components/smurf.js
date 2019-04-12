@@ -4,7 +4,9 @@ let Smurf = (props) => {
   console.log(props.smurf)
   return (
     <div>
-      <p>{props.smurf.name}</p>
+      <p>name: {props.smurf.name}</p>
+      <p>age: {props.smurf.age}</p>
+      <p>height: {props.smurf.height}</p>
     </div>
   )
 } 
