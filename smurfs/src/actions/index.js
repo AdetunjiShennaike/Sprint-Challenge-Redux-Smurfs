@@ -36,10 +36,10 @@ export let ADD_SUCCESS = 'ADD_SUCCESS'
 export let ADD_FAIL = 'ADD_FAIL'
 
 
-export const addSmurfs = () => dispatch => {
+export const addSmurfs = (newSmurf) => dispatch => {
   dispatch({ type: ADD_START })
 
-  axios.post('http://localhost:3333/smurfs')
+  axios.post('http://localhost:3333/smurfs', newSmurf)
   .then( res => {console.log('post', res)
     dispatch({ type: ADD_SUCCESS, payload: res.data })
   })

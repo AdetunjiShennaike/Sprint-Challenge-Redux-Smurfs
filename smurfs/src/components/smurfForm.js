@@ -1,24 +1,35 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+
+import { addSmurfs } from '../actions/'
+
 class SmurfList extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       name: '',
       age: '',
       height: '',
-      smurfs: props.smurf,
-      newSmurf: props.newSmurf
-      
     }
   }
 
   handleChanges = event => {
-    console.log(event.target.value)
+    console.log('event',event.target.value)
     this.setState({ [event.target.name]: event.target.value });
   }
+
+  newSmurf = event => {
+    event.preventDefault()
+    let newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    }
+    this.props.addSmurfs(newSmurf)
+  }
   
-  render(){console.log(this.state.smurfs)
+  render(){
   return ( 
     <div>
       <form>
@@ -49,4 +60,11 @@ class SmurfList extends React.Component {
   )}
 }
 
-export default SmurfList 
+const mapStateToProps = state => ({
+  smurfs: state.smurfs,
+  fetching: state.fetching,
+  error: state.error,
+  addingSmurf: state.addingSmurf,
+})
+
+export default connect( mapStateToProps, { addSmurfs } )(SmurfList);
