@@ -3,8 +3,9 @@ import './App.css';
 
 import { connect } from 'react-redux'
 
-import { grabSmurfs } from '../actions/'
+import { grabSmurfs, addSmurfs } from '../actions/'
 import Smurf from './smurf';
+import SmurfList from './smurfForm';
 
 /*
  to wire this component up you're going to need a few things.
@@ -18,7 +19,15 @@ class App extends Component {
     // console.log('CDM', this.props)
   }
 
-  
+  handleChanges = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  newSmurf = event => {
+    event.preventDefault()
+    this.props.addSmurfs()
+  }
+
   render() {
     // console.log(this.props.smurfs)
     return (
@@ -30,6 +39,7 @@ class App extends Component {
         {this.props.smurfs.map( event => {
           <Smurf key={event.id} smurf={event} />
         })}
+        <SmurfList smurf={this.props.smurfs} handleChanges={this.handleChanges} addSmurf={this.newSmurf} />
       </div>
     );
   }
@@ -43,4 +53,4 @@ const mapStateToProps = state => ({
   deletingSmurf: state.deletingSmurf
 })
 
-export default connect( mapStateToProps, { grabSmurfs } )(App);
+export default connect( mapStateToProps, { grabSmurfs, addSmurfs } )(App);

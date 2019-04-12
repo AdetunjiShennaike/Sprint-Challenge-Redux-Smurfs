@@ -3,7 +3,7 @@ import React from 'react'
 let SmurfList = (props) => {
   return (
     <div>
-      <form onSubmit={props.addSmurf}>
+      <form>
       <input
         type='text'
         onChange={props.handleChange}
@@ -22,7 +22,7 @@ let SmurfList = (props) => {
         value={props.smurf.height}
         placeholder='Height'
       />
-      <button onClick={props.addSmurf}>Add</button>
+      <button onClick={props.newSmurf}>Add</button>
       </form>
     </div> 
   )
