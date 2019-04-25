@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const server = express();
 server.use(express.json());
 server.use(cors());
+server.use(helmet());
 
 const sendUserError = (msg, res) => {
   res.status(422);
