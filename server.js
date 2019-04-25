@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const port = 3333;
+const helmet = require('helmet');
 
 const server = express();
 server.use(express.json());
 server.use(cors());
+server.use(helmet());
 
 const sendUserError = (msg, res) => {
   res.status(422);
@@ -22,7 +23,7 @@ let smurfs = [
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
+let smurfId = process.env.ID;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
@@ -78,7 +79,5 @@ server.delete('/smurfs/:id', (req, res) => {
   }
 });
 
-server.listen(port, err => {
-  if (err) console.log(err);
-  console.log(`server is listening on port ${port}`);
-});
+//export server
+module.exports = server;
